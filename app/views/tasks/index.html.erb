@@ -1,7 +1,14 @@
 <h1>My Tasks</h1>
 
 <% @tasks.each do |task| %>
-  <p><%= task.completed ? '[x]' : '[ ]' %> <%= link_to task.title, task_path(task) %></p>
+  <p>
+    <%= task.completed ? '[x]' : '[ ]' %>
+    <%= link_to task.title, task_path(task) %>
+    <%= link_to 'del',
+      task_path(task),
+      method: :delete,
+      data: { confirm: 'want to delete?' } %>
+  </p>
 <% end %>
 
 <%= link_to 'new task', new_task_path %>
